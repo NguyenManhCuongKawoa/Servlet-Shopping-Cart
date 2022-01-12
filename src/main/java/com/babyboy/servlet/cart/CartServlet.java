@@ -50,7 +50,7 @@ public class CartServlet extends HttpServlet {
 		request.setAttribute("carts", carts);
 //			double totalPrice = carts.stream().mapToDouble(cart -> cart.getPrice()).reduce(0, (init, next) -> init + next);
 //			double totalPrice = carts.stream().mapToDouble(cart -> cart.getPrice()).reduce(0, Double::sum);
-		double totalPrice = carts.stream().mapToDouble(cart -> cart.getPrice()).sum();
+		double totalPrice = carts.stream().mapToDouble(cart -> cart.getProduct().getPrice()).sum();
 		request.setAttribute("totalPrice", totalPrice);
 		request.getRequestDispatcher("cart.jsp").forward(request, response);
 		 

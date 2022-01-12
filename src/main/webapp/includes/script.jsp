@@ -300,3 +300,14 @@ function getHTMLPagination(numberPage, currentPage, cId, contextPath) {
 	        alert(error);
 	    }
 	</script>
+	
+<script>
+	// Enable Popup , Modal
+	function enableModal(id) {
+		var myModal = document.getElementById(id)
+
+		myModal.addEventListener('shown.bs.modal', function () {
+		})
+	}
+</script>
+	

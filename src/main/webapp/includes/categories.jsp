@@ -9,16 +9,16 @@
 <div class="mb-4 category-wrapper" style="overflow-x: scroll;">
 	<div id="list-category" class="list-group flex-row flex-lg-column " >
 	  <div class="d-none d-lg-block card-header text-center py-2 fs-4">Categories</div>
-	  <c:if test = '${sessionScope.auth != null && sessionScope.auth.getRole().equals(Role.ADMIN)}'>
- 		 <button class="list-group-item list-group-item-action d-flex alidn-items-center" style="background-color: #c8f1e3;" 
-	  	  		onclick=""
-	  	  >
-	  	  	<div class="me-2 text-success fs-4 d-flex justify-content-center align-items-center " style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;">
-	  	  		<i class="fas fa-plus" style="user-select: auto;"></i>
-	  	  	</div>
-		  	<span class="fs-5 text-nowrap">New Category</span>
-		  </button>
-      </c:if>
+<%-- 	  <c:if test = '${sessionScope.auth != null && sessionScope.auth.getRole().equals(Role.ADMIN)}'> --%>
+<!--  		 <button class="list-group-item list-group-item-action d-flex alidn-items-center" style="background-color: #c8f1e3;"  -->
+<!-- 	  	  		onclick="" -->
+<!-- 	  	  > -->
+<!-- 	  	  	<div class="me-2 text-success fs-4 d-flex justify-content-center align-items-center " style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;"> -->
+<!-- 	  	  		<i class="fas fa-plus" style="user-select: auto;"></i> -->
+<!-- 	  	  	</div> -->
+<!-- 		  	<span class="fs-5 text-nowrap">New Category</span> -->
+<!-- 		  </button> -->
+<%--       </c:if> --%>
 	  <button class="category-item list-group-item list-group-item-action d-flex alidn-items-center <c:if test="${categoryActive == -1}">active</c:if>" 
   	  		onclick="handleGetProducts(this, `<c:url value='/api/products'/>`, `<c:url value='/'/>`)"
   	  		data-id="-1"

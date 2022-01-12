@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.babyboy.dao.jpa.ProductDao;
 import com.babyboy.model.Cart;
+import com.babyboy.model.Product;
 
 /**
  * Servlet implementation class ApiCartAddServlet
@@ -49,11 +50,13 @@ public class ApiCartAddServlet extends HttpServlet {
 		if(idCart != null) {
 			if(idCart.matches("\\d+")) {
 				ProductDao pDao = new ProductDao();
-				Cart cart =  new Cart(pDao.getProductById(Long.parseLong(idCart)));
+				Cart cart =  new Cart();
+				Product product  = pDao.getProductById(Long.parseLong(idCart)); 
+				cart.setProduct(product);
 				if(cart != null) {
 					boolean flag = true;
 					for(int i = 0; i < carts.size(); i++ ) {
-						if(carts.get(i).getId() == cart.getId()) {
+						if(carts.get(i).getProduct().getId() == cart.getProduct().getId()) {
 							carts.get(i).setQuantity(carts.get(i).getQuantity() + 1);
 							flag = false;
 							break;
@@ -61,8 +64,8 @@ public class ApiCartAddServlet extends HttpServlet {
 					}
 					
 					if(flag) {
-						System.out.println(carts);
-						System.out.println(cart);
+//						System.out.println(carts);
+//						System.out.println(cart);
 						carts.add(cart);	
 					}
 				}

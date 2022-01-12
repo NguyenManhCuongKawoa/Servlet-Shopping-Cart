@@ -55,6 +55,27 @@ public class CategoryDao {
 		}
 	}
 	
+	public static Category getCategoryByName(String name) {
+		Category c = null;
+		try {
+			EntityManager em = entityManagerFactory.createEntityManager();
+			em.getTransaction().begin();
+			
+			List<Category> categories = em.createQuery("from Category c where c.name = :name")
+					.setParameter("name", name).getResultList();
+			if(categories.size() > 0) {
+				c = categories.get(0);
+			}
+			
+			em.getTransaction().commit();
+			em.close();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return c;
+	}
+	
 	public static boolean addNewCategory(Category category) {
 		try {
 			EntityManager em = entityManagerFactory.createEntityManager();

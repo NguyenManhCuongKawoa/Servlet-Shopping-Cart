@@ -12,11 +12,13 @@
 	  			<c:if test = '${sessionScope.auth.getImageUrl() == null}'>
 		  			<img style="width:3rem; height: 3rem; object-fit: cover;" src="https://ih1.redbubble.net/image.1046392292.3346/st,small,845x845-pad,1000x1000,f8f8f8.jpg" class="img-thumbnail" alt="avatar"/>
 	  			</c:if>
-	  			<h5 class="ms-2 mb-0">${sessionScope.auth.getName()}</h5>
+	  			<a class="fs-5 ms-2 mb-0 text-decoration-none text-black" href="<c:url value='/profile'/>">
+	  				${sessionScope.auth.getName()}
+	  			</a>
 	  		</div>
 	  	</c:if>
 	  	<c:if test = '${sessionScope.auth == null}'>
-		    <a class="navbar-brand" href="<c:url value='/'/>">E-Commerce Shopping Cart</a>	  		
+		    <a class="navbar-brand" href="<c:url value='/'/>">E-Commerce Shopping Cart</a>  		
 	  	</c:if>
 	  	
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +41,11 @@
 			    </c:if>
 	          </a>
 	        </li>
+       		<li class="nav-item mx-1 border-start" >
+          		<a class="nav-link" href="<c:url value='/orders'/>" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Orders">
+          			<i class="fas fa-file-invoice" ></i> Orders
+          		</a>
+          	</li>
 	         <c:if test = '${sessionScope.auth != null && sessionScope.auth.getRole().equals(Role.ADMIN)}'>
 	         	<li class="nav-item mx-1 border-start" data-bs-toggle="tooltip" data-bs-placement="bottom" title="My Products">
 	          		<a class="nav-link" href="<c:url value='/admin/products'/>">
@@ -47,14 +54,9 @@
 	        	</li>
 	         </c:if>
 	        <c:if test = '${sessionScope.auth != null}'>
-	         	<li class="nav-item mx-1 border-start" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Bills">
+	         	<li class="nav-item mx-1 border-start" >
 	         		<c:if test = '${sessionScope.auth.getRole().equals(Role.ADMIN)}'>
-		          		<a class="nav-link" href="<c:url value='/admin/bills'/>">
-		          			<i class="fas fa-file-invoice" ></i> Bills
-		          		</a>
-	          		</c:if>
-	          		<c:if test = '${sessionScope.auth.getRole().equals(Role.USER)}'>
-		          		<a class="nav-link" href="<c:url value='/bills'/>">
+		          		<a class="nav-link" href="<c:url value='/admin/bills'/>" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Bills">
 		          			<i class="fas fa-file-invoice" ></i> Bills
 		          		</a>
 	          		</c:if>

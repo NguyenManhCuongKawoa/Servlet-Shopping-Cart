@@ -85,4 +85,21 @@ public class UserDao {
 			return false;
 		}
 	}
+	
+	public static boolean changePassword(long id, String password) {
+		try {
+			EntityManager em = entityManagerFactory.createEntityManager();
+			em.getTransaction().begin();
+			
+			User user = em.find(User.class, id);
+			user.setPassword(password);
+
+			em.getTransaction().commit();
+			em.close();
+			
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
+	}
 }
